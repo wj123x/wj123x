@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转界面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .tab {
+            padding: 10px 20px;
+        }
+        .tab .tab_list {
+            background-color: #eef1ee;
+            height: 39px;
+            border: 1.5px solid #d8dad8;
+        }
+        .tab_list li {
+            float: left;
+            line-height: 38px;
+            padding: 0 20px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+        }
+        .tab_list .current {
+            position: relative;
+            top: -1px;
+            background-color: #c81623;
+            color: #fff;
+            border: 1.5px solid #b95c53;
+        }
+        .tab_con .item {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>销后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item" >
+                规格与包装模块内容
+            </div>
+            <div class="item">
+                销后保障模块内容
+            </div>
+            <div class="item">
+                商品评价模块内容
+            </div>
+            <div class="item">
+                手机社区模块内容
+            </div>
+        </div>
+    </div>
+    <script>
+        var lis = document.getElementsByTagName('li');
+        var item = document.getElementsByClassName('item');
+        console.log(lis);
+        for(var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function() {
+                for(var i = 0; i < lis.length; i++ ) {
+                    lis[i].className = '';
+                    item[i].style = 'display: none;';
+                }
+                this.className = 'current';
+                var index = this.getAttribute('index');
+                item[index].style = 'display: block;';
+            }
+        }
+    </script>
+</body>
+</html>
